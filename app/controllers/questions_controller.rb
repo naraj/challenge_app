@@ -11,7 +11,11 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new
+    if current_user.points < 10
+      redirect_to user_path(current_user), notice: 'You need at least 10 points to create a question.'
+    else
+      @question = Question.new
+    end
   end
 
   def edit
@@ -22,6 +26,8 @@ class QuestionsController < ApplicationController
     @question.user = current_user
 
     if @question.save
+      current_user.points -= 10
+      current_user.save
       redirect_to @question, notice: 'Question was successfully created.'
     else
       render :new
@@ -38,7 +44,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to questions_url, notice: 'Question was successfully destroyed.'
+    redirect_to user_path(current_user), notice: 'Question was successfully destroyed.'
   end
 
   private
