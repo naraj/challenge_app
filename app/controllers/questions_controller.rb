@@ -43,11 +43,12 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    @question.answers.delete_all
     @question.destroy
-    redirect_to user_path(current_user), notice: 'Question was successfully destroyed.'
+
+    redirect_to questions_path, notice: 'Question was successfully destroyed.'
   end
 
-  helper_method :destroy
 
   private
     # Use callbacks to share common setup or constraints between actions.
