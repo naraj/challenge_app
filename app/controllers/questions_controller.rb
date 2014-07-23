@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
 
   def new
     if current_user.points < 10
-      redirect_to user_path(current_user), notice: 'You need at least 10 points to create a question.'
+      redirect_to user_path(current_user), alert: 'You need at least 10 points to create a question.'
     else
       @question = Question.new
     end
@@ -46,6 +46,8 @@ class QuestionsController < ApplicationController
     @question.destroy
     redirect_to user_path(current_user), notice: 'Question was successfully destroyed.'
   end
+
+  helper_method :destroy
 
   private
     # Use callbacks to share common setup or constraints between actions.
