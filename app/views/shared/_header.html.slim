@@ -1,9 +1,5 @@
 header
-  - if flash.present?
-    .flash
-      - flash.each do |key, message|
-        div class= "flash-messages #{key}"
-          p= message
+  
 
 nav class= "navbar navbar-default" role="navigation"
   div class="col-md-2"
@@ -25,7 +21,7 @@ nav class= "navbar navbar-default" role="navigation"
       = link_to "Sign out", destroy_user_session_path, method: :delete, :class => "btn btn-default navbar-btn navbar-right"
       = link_to "Edit profile", edit_user_registration_path, :class => "btn btn-default navbar-btn navbar-right"
     - else
-        = link_to "Sign in", new_user_session_path, :class => "btn btn-default navbar-btn"
-        = link_to "Sign up", new_user_registration_path, :class => "btn btn-default navbar-btn"
+        = link_to "Sign up", new_user_registration_path, :class => "btn btn-default navbar-btn navbar-right"
+        = link_to "Sign in", new_user_session_path, :class => "btn btn-default navbar-btn navbar-right"
 
   div class="col-md-2"
