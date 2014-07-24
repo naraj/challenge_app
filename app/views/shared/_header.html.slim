@@ -5,17 +5,27 @@ header
         div class= "flash-messages #{key}"
           p= message
 
-  = link_to "Challenge App", root_path
-  '  |
-  - if user_signed_in?
-    ' Welcome,
-    = link_to current_user, user_path(current_user)
-    '  |
-    = link_to "Edit profile", edit_user_registration_path
-    '  |
-    = link_to "Sign out", destroy_user_session_path, method: :delete
-  - else
-    = link_to "Sign in", new_user_session_path
-    '  |
-    = link_to "Sign up", new_user_registration_path
+nav class= "navbar navbar-default" role="navigation"
+  div class="col-md-2"
+  div class="col-md-8" 
+    div class="navbar-header"
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      = link_to "Challenge App", root_path, :class => "navbar-brand"
+    
+    - if user_signed_in?
+      p class="navbar-text"
+        ' Welcome,
+        = link_to current_user, user_path(current_user)
 
+      = link_to "Sign out", destroy_user_session_path, method: :delete, :class => "btn btn-default navbar-btn navbar-right"
+      = link_to "Edit profile", edit_user_registration_path, :class => "btn btn-default navbar-btn navbar-right"
+    - else
+        = link_to "Sign in", new_user_session_path, :class => "btn btn-default navbar-btn"
+        = link_to "Sign up", new_user_registration_path, :class => "btn btn-default navbar-btn"
+
+  div class="col-md-2"
