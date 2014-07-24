@@ -9,9 +9,9 @@
   -if @question.user_id == current_user.id
 
     .links
-      = link_to 'Edit', edit_question_path(@question)
-      '  |
-      = link_to 'Delete', question_path(@question), method: :delete
+      = link_to 'Edit', edit_question_path(@question), :class => "btn btn-primary btn-xs"
+      '   
+      = link_to 'Delete', question_path(@question), method: :delete, :class => "btn btn-primary btn-xs"
 
   h3 Answers
 
@@ -28,5 +28,5 @@
       = f.label :contents
       = f.text_area :contents
 
-    .actions= f.submit 'Save'
+    .actions= f.submit 'Save', :class => "btn btn-primary btn-xs"
 
