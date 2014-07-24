@@ -5,6 +5,7 @@ gem 'rails', '4.1.1'
 gem 'sqlite3'
 gem 'devise'
 gem 'tzinfo-data'
+gem 'make_flaggable', :git => 'git://github.com/medihack/make_flaggable.git'
 
 # frontend
 gem 'slim-rails'

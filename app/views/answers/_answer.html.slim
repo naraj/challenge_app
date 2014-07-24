@@ -1,7 +1,11 @@
 .answer id="answer-#{answer.id}"
-	= answer.likes
-	
-	.contents= answer.contents
+	.col-md-1
+		div class="like-button btn btn-primary btn-xs"
+			= answer.likes
+			'  Likes
+	.col-md-11
+		.contents= answer.contents
+	.clearfix
 	.details
 		'  Answered on
 	    = l(answer.created_at, format: :long)
