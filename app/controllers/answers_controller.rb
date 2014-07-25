@@ -14,21 +14,6 @@ class AnswersController < ApplicationController
     end
   end
 
-
-
-  def like
-    @answer = @question.find(params[:id])
-    @answer.likes++
-    @answer.save
-  end
-
-
-  def dislike
-    @answer = @question.find(params[:id])
-    @answer.likes--
-    @answer.save
-  end
-
   private
 
     def set_question
