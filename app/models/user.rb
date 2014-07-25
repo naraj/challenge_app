@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :questions
   has_many :answers
+  make_flagger :flag_once => true
 
   def to_s
   	if name.empty?

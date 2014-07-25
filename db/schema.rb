@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724123217) do
+ActiveRecord::Schema.define(version: 20140725111130) do
 
   create_table "answers", force: true do |t|
     t.integer  "question_id"
@@ -19,12 +19,24 @@ ActiveRecord::Schema.define(version: 20140724123217) do
     t.text     "contents"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "likes",       default: 0,     null: false
-    t.boolean  "accepted",    default: false, null: false
+    t.integer  "flaggings_count"
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["user_id"], name: "index_answers_on_user_id"
+
+  create_table "flaggings", force: true do |t|
+    t.string   "flaggable_type"
+    t.integer  "flaggable_id"
+    t.string   "flagger_type"
+    t.integer  "flagger_id"
+    t.text     "reason"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "flaggings", ["flaggable_type", "flaggable_id"], name: "index_flaggings_on_flaggable_type_and_flaggable_id"
+  add_index "flaggings", ["flagger_type", "flagger_id", "flaggable_type", "flaggable_id"], name: "access_flaggings"
 
   create_table "questions", force: true do |t|
     t.string   "title"
@@ -43,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140724123217) do
     t.datetime "updated_at"
     t.integer  "points",             default: 100, null: false
     t.string   "name",               default: "",  null: false
+    t.integer  "flaggings_count"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
