@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
+
+  get "like" => "answer#like", :as => "like"
+ 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
