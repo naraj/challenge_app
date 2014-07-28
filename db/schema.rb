@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140725111130) do
     t.text     "contents"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "flaggings_count"
+    t.integer  "flaggings_count", default: 0, null: false
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140725111130) do
     t.datetime "updated_at"
     t.integer  "points",             default: 100, null: false
     t.string   "name",               default: "",  null: false
-    t.integer  "flaggings_count"
+    t.integer  "flaggings_count",    default: 0,   null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

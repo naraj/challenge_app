@@ -1,8 +1,7 @@
 .answer id="answer-#{answer.id}"
 	.col-md-1
-		div class="like-button btn btn-primary btn-xs"
-			= answer.likes
-			'  Likes
+		
+			= link_to  "#{answer.flaggings_count} Likes" , like_question_answers_path(:question_id => @question.id, :id => answer.id), :class => "like-button btn btn-success btn-xs"
 	.col-md-11
 		.contents= answer.contents
 	.clearfix

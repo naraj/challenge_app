@@ -15,6 +15,19 @@ class AnswersController < ApplicationController
   end
 
 
+
+  def like
+    @answer = Answer.find(params[:id])
+    if !current_user.flagged?(@answer)
+      current_user.flag(@answer)
+    end
+    redirect_to @question
+
+
+  end
+
+
+
   private
 
     def set_question
