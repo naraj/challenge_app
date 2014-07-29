@@ -1,17 +1,23 @@
 .question id="question-#{@question.id}"
-  h2= @question.title
+  .col-md-1
+    -if @question.answered
+      span class="label label-success"
+          ' Answered
+  .col-md-11
+   
+      h2= @question.title
 
-  = render "details", question: @question
+      = render "details", question: @question
 
-  p
-    = @question.contents
+      p
+        = @question.contents
 
-  -if @question.user_id == current_user.id
+      -if current_user != nil and @question.user_id == current_user.id
 
-    .links
-      = link_to 'Edit', edit_question_path(@question), :class => "btn btn-primary btn-xs"
-      '   
-      = link_to 'Delete', question_path(@question), method: :delete, :class => "btn btn-primary btn-xs"
+        .links
+          = link_to 'Edit', edit_question_path(@question), :class => "btn btn-primary btn-xs"
+          '   
+          = link_to 'Delete', question_path(@question), method: :delete, :class => "btn btn-primary btn-xs"
 
   h3 Answers
 
@@ -19,14 +25,14 @@
     = render @question.answers
   - else
     '  There are no answers to this question.
+  -if !@question.answered
+    h3 Add answer
 
-  h3 Add answer
+    = form_for [@question, @answer] do |f|
 
-  = form_for [@question, @answer] do |f|
+      .field
+        = f.label :contents
+        = f.text_area :contents
 
-    .field
-      = f.label :contents
-      = f.text_area :contents
-
-    .actions= f.submit 'Save', :class => "btn btn-primary btn-xs"
+      .actions= f.submit 'Save', :class => "btn btn-primary btn-xs"
 

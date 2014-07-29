@@ -2,6 +2,10 @@
 	.col-md-1
 		
 			= link_to  "#{answer.flaggings_count} Likes" , like_question_answers_path(:question_id => @question.id, :id => answer.id), :class => "like-button btn btn-success btn-xs"
+			-if current_user != nil and @question.user.id == current_user.id and !@question.answered
+				= link_to  "Accept" , accept_question_answers_path(:question_id => @question.id, :id => answer.id), :class => "accept-button btn btn-success btn-xs"
+			-if answer.accepted
+      			span class="glyphicon glyphicon-ok" style="color: #449D44; font-size: 50px"
 	.col-md-11
 		.contents= answer.contents
 	.clearfix

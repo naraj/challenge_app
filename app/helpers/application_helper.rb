@@ -3,9 +3,9 @@ module ApplicationHelper
 		
 	    case type.to_s
 		    when "alert"
-		    	"alert-warning"
+		    	"alert-danger"
 		    when "notice" 
-		    	"alert-info"
+		    	"alert-success"
 		    when "success" 
 		    	"alert-success"
 		    when "error" 

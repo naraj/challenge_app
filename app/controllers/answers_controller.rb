@@ -22,10 +22,27 @@ class AnswersController < ApplicationController
       current_user.flag(@answer)
     end
     redirect_to @question
-
-
   end
 
+
+  def accept
+    @answer = Answer.find(params[:id])
+    if @question.user.id == current_user.id
+      if !@question.answered and !@answer.accepted
+        @answer.accepted = true
+        @question.answered = true
+        if @answer.save
+          if @question.save
+            redirect_to question_path(@question), notice: "You successfully accepted the answer."
+          else
+            redirect_to question_path(@question), alert: "There was an error when accepting the answer."
+          end
+        else
+          redirect_to question_path(@question), alert: "There was an error when accepting the answer."
+        end
+      end 
+    end
+  end
 
 
   private

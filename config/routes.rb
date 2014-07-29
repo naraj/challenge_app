@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :questions do
     resource :answers do
       get '/like' => 'answers#like', as: :like
+      get '/accept' => 'answers#accept', as: :accept
     end
   end
 

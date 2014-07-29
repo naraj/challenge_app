@@ -1,3 +1,12 @@
 div class="like-button btn btn-primary btn-xs"
 			= answer.likes
 			'  Likes
+
+
+div class="like-button btn btn-success btn-xs" data-type="script" data-remote="true" data-method="like" data-confirm="Are you sure?"
+				= answer.flaggings_count
+				'  Liked
+		-else
+			div class="like-button btn btn-primary btn-xs" data-type="script" data-remote="true" data-method="like" data-confirm="Are you sure?"
+				= answer.flaggings_count
+				'  Likes
