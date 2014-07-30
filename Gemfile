@@ -6,6 +6,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'tzinfo-data'
 gem 'make_flaggable', :git => 'git://github.com/medihack/make_flaggable.git'
+gem 'will_paginate', '~> 3.0.5'
 
 # frontend
 gem 'slim-rails'

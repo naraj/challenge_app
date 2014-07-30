@@ -1,0 +1,21 @@
+h2
+	'Leaderboards
+table class="table table-condensed"
+	tr
+		th
+			'Index
+		th
+			'Name
+		th
+			'Score
+	-@users.each.with_index do |user, index|
+		tr
+			td
+				=index+1
+			td
+				=user
+			td
+				=user.points
+
+.digg_pagination
+	=will_paginate @users

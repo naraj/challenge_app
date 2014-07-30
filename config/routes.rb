@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :answers, only: [:create]
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
   resources :questions do
     resource :answers do
       get '/like' => 'answers#like', as: :like
