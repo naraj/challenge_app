@@ -20,6 +20,9 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     if !current_user.flagged?(@answer)
       current_user.flag(@answer)
+      user = User.find(id=@answer.user_id)
+      user.points += 5
+      user.save
     end
     redirect_to @question
   end
@@ -30,10 +33,17 @@ class AnswersController < ApplicationController
     if @question.user.id == current_user.id
       if !@question.answered and !@answer.accepted
         @answer.accepted = true
+        user = User.find(id=@answer.user_id)
+        user.points += 25
+
         @question.answered = true
-        if @answer.save
-          if @question.save
-            redirect_to question_path(@question), notice: "You successfully accepted the answer."
+        if user.save
+          if @answer.save
+            if @question.save
+              redirect_to question_path(@question), notice: "You successfully accepted the answer."
+            else
+              redirect_to question_path(@question), alert: "There was an error when accepting the answer."
+            end
           else
             redirect_to question_path(@question), alert: "There was an error when accepting the answer."
           end
