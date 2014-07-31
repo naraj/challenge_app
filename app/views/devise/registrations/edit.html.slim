@@ -12,6 +12,10 @@ h2 Edit Profile
     = f.email_field :email
 
   .field
+    = f.label :avatar
+    = f.file_field :avatar
+
+  .field
     = f.label :password
     .hint
       ' (leave blank if you don't want to change it)

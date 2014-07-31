@@ -1,5 +1,6 @@
 .user id="user-#{@user.id}"
   h2= @user
+  =image_tag @user.avatar.url
   h3
     'Points: 
     = @user.points
