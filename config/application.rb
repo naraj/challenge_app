@@ -24,4 +24,5 @@ module ChallengeApp
       g.template_engine :slim
     end
   end
+  config.action_mailer.async = true
 end

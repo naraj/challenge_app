@@ -17,3 +17,9 @@
 
 # Ignore local config files
 /config/database.yml
+
+*.jpg
+*.png
+*.tiff
+*.jpeg
+*.gif
