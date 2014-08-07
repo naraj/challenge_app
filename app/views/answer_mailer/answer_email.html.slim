@@ -1,0 +1,9 @@
+body
+	h1
+		'ChallangeApp notification
+	p
+		=@answer_user 
+		' has posted an answer to your question.
+	p
+		'See that answere here:
+		=question_path(@question)

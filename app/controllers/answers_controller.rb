@@ -8,6 +8,7 @@ class AnswersController < ApplicationController
     @answer.question = @question
 
     if @answer.save
+      AnswerMailer.answer_email(current_user.id, @question).deliver
       redirect_to question_path(@question), notice: "Answer was successfully created."
     else
       redirect_to question_path(@question), alert: "There was an error when adding answer."

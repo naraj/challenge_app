@@ -23,6 +23,7 @@ module ChallengeApp
     config.generators do |g|
       g.template_engine :slim
     end
+    
   end
-  config.action_mailer.async = true
+
 end
