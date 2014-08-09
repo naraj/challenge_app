@@ -48,6 +48,7 @@ end
   # :recoverable, :rememberable and :trackable
   devise :database_authenticatable, :registerable, :validatable
 
+  # Avatar settings
   has_attached_file :avatar, :styles => { 
                                 :medium => ["300x300>", :jpg, :quality => 70],
                                 :thumb => ["100x100#", :jpg, :quality => 70]
@@ -56,6 +57,7 @@ end
                     :default_url => "default/default-avatar.png",
                     :url => "/assets/users/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension"
+
   validates_attachment_content_type :avatar, :content_type => /\Aimage/
   # Validate filename
   validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]

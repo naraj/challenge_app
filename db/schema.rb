@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809123941) do
+ActiveRecord::Schema.define(version: 20140809130913) do
 
   create_table "answers", force: true do |t|
     t.integer  "question_id"
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20140809123941) do
     t.boolean  "default"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "flaggings", force: true do |t|

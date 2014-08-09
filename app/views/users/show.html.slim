@@ -10,7 +10,7 @@
 
     - if @user.badges.any?
       - @user.badges.each do |badge|
-        =badge.name
+        =image_tag badge.picture.url
     - else
       ' No badges yet.
 
