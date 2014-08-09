@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
     @answer.question = @question
 
     if @answer.save
-      AnswerMailer.answer_email(current_user.id, @question).deliver
+      #AnswerMailer.answer_email(current_user.id, @question).deliver
       redirect_to question_path(@question), notice: "Answer was successfully created."
     else
       redirect_to question_path(@question), alert: "There was an error when adding answer."
@@ -22,7 +22,7 @@ class AnswersController < ApplicationController
     if !current_user.flagged?(@answer)
       current_user.flag(@answer)
       user = User.find(id=@answer.user_id)
-      user.points += 5
+      user.change_points(5)
       user.save
     end
     redirect_to @question
@@ -35,19 +35,11 @@ class AnswersController < ApplicationController
       if !@question.answered and !@answer.accepted
         @answer.accepted = true
         user = User.find(id=@answer.user_id)
-        user.points += 25
+        user.change_points(25)
 
         @question.answered = true
-        if user.save
-          if @answer.save
-            if @question.save
-              redirect_to question_path(@question), notice: "You successfully accepted the answer."
-            else
-              redirect_to question_path(@question), alert: "There was an error when accepting the answer."
-            end
-          else
-            redirect_to question_path(@question), alert: "There was an error when accepting the answer."
-          end
+        if user.save and @answer.save and @question.save
+          redirect_to question_path(@question), notice: "You successfully accepted the answer."
         else
           redirect_to question_path(@question), alert: "There was an error when accepting the answer."
         end

@@ -5,7 +5,16 @@
     'Points: 
     = @user.points
 
-  .questions
+  .badges
+    h3 Badges:
+
+    - if @user.badges.any?
+      - @user.badges.each do |badge|
+        =badge.name
+    - else
+      ' No badges yet.
+
+  .Questions
     h3 Questions
 
     - if @user.questions.any?
