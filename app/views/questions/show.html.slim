@@ -10,7 +10,7 @@
       = render "details", question: @question
 
       p
-        = @question.contents
+        = markdown @question.contents
 
       -if current_user != nil and @question.user_id == current_user.id
 
@@ -22,7 +22,7 @@
   h3 Answers
 
   - if @question.answers.any?
-    = render @question.answers
+    = render @question.answers.order('accepted desc, flaggings_count desc')
   - else
     '  There are no answers to this question.
   -if !@question.answered

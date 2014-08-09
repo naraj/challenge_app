@@ -9,6 +9,7 @@ gem 'make_flaggable', :git => 'git://github.com/medihack/make_flaggable.git'
 gem 'will_paginate', '~> 3.0.5'
 gem "paperclip", "~> 4.1"
 gem "gioco"
+gem 'redcarpet'
 
 # frontend
 gem 'slim-rails'
