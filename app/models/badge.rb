@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: badges
+#
+#  id                   :integer          not null, primary key
+#  name                 :string(255)
+#  points               :integer
+#  default              :boolean
+#  created_at           :datetime
+#  updated_at           :datetime
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
+#
+
 class Badge < ActiveRecord::Base
   has_many :users , :through => :levels 
   has_many :levels  , :dependent => :destroy
