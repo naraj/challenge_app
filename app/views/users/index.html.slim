@@ -17,7 +17,7 @@ table class="table table-condensed"
 			td
 				=image_tag user.avatar.url(:thumb)
 			td
-				=user
+				=link_to user, user_path(user)
 			td
 				=user.points
 
