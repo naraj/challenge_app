@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
     @answer.question = @question
 
     if @answer.save
-      AnswerMailer.answer_email(current_user.id, @question).deliver
+      AnswerMailer.delay.answer_email(current_user.id, @question)
       redirect_to question_path(@question), notice: "Answer was successfully created."
     else
       redirect_to question_path(@question), alert: "There was an error when adding answer."
@@ -39,7 +39,7 @@ class AnswersController < ApplicationController
 
         @question.answered = true
         if user.save and @answer.save and @question.save
-          AcceptedMailer.accepted_email(@answer.user_id, @question).deliver
+          AcceptedMailer.delay.accepted_email(@answer.user_id, @question)
           redirect_to question_path(@question), notice: "You successfully accepted the answer."
         else
           redirect_to question_path(@question), alert: "There was an error when accepting the answer."
