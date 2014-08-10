@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731083906) do
+ActiveRecord::Schema.define(version: 20140809130913) do
 
   create_table "answers", force: true do |t|
     t.integer  "question_id"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20140731083906) do
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["user_id"], name: "index_answers_on_user_id"
 
+  create_table "badges", force: true do |t|
+    t.string   "name"
+    t.integer  "points"
+    t.boolean  "default"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
   create_table "flaggings", force: true do |t|
     t.string   "flaggable_type"
     t.integer  "flaggable_id"
@@ -38,6 +50,13 @@ ActiveRecord::Schema.define(version: 20140731083906) do
 
   add_index "flaggings", ["flaggable_type", "flaggable_id"], name: "index_flaggings_on_flaggable_type_and_flaggable_id"
   add_index "flaggings", ["flagger_type", "flagger_id", "flaggable_type", "flaggable_id"], name: "access_flaggings"
+
+  create_table "levels", force: true do |t|
+    t.integer  "badge_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "questions", force: true do |t|
     t.string   "title"
@@ -55,13 +74,13 @@ ActiveRecord::Schema.define(version: 20140731083906) do
     t.string   "encrypted_password",  default: "",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "points",              default: 100, null: false
     t.string   "name",                default: "",  null: false
     t.integer  "flaggings_count",     default: 0,   null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "points",              default: 100
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
