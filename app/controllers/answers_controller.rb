@@ -41,6 +41,7 @@ class AnswersController < ApplicationController
         if user.save
           if @answer.save
             if @question.save
+              AcceptedMailer.accepted_email(@answer.user_id, @question).deliver
               redirect_to question_path(@question), notice: "You successfully accepted the answer."
             else
               redirect_to question_path(@question), alert: "There was an error when accepting the answer."

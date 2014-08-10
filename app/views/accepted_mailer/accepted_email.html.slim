@@ -1,0 +1,15 @@
+body
+	h1
+		'ChallangeApp notification.
+	h2	
+		'Hello, 
+		= @answer_user.to_s
+		'!
+	p 	
+		'User 
+		= @question_user.to_s
+		'  has accepted your answer.
+	p
+		'See that answer 
+		=link_to "here.", @question_url
+		
