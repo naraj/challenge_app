@@ -1,8 +1,8 @@
 .question id="question-#{question.id}"
 	.col-md-1
-		-if question.answered
-	      span class="label label-success"
-	      	' Answered
+		
+		span class="badge" style="background-color:#{if question.answered then '#5CB85C';}"
+			' A
 	.col-md-11
 	  .title= link_to question.title, question_path(question)
 	  = render "questions/details", question: question

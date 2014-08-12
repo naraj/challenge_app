@@ -6,6 +6,8 @@
 				= link_to  "Accept" , accept_question_answers_path(:question_id => @question.id, :id => answer.id), :class => "accept-button btn btn-success btn-xs"
 			-if answer.accepted
       			span class="glyphicon glyphicon-ok" style="color: #449D44; font-size: 50px"
+      			span class="label label-success"
+      				'Accepted
 	.col-md-11
 		.contents= markdown answer.contents
 	.clearfix
