@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 # core
 gem 'rails', '4.1.1'
-gem 'sqlite3'
 gem 'devise'
 gem 'tzinfo-data'
 gem 'make_flaggable', :git => 'git://github.com/medihack/make_flaggable.git'
@@ -30,6 +29,16 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 group :development do
   gem 'spring'
   gem 'annotate', '~> 2.6.5'
+end
+
+group :development, :test do
+    gem 'sqlite3'
+end
+
+# production
+group :production do
+	gem 'rails_12factor'
+  gem 'pg'
 end
 
 # testing
