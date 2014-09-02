@@ -11,6 +11,8 @@ gem "paperclip", "~> 4.1"
 gem "gioco"
 gem 'redcarpet'
 gem 'sidekiq'
+gem 'unicorn'
+gem 'unicorn-rails'
 
 # frontend
 gem 'slim-rails'
