@@ -13,6 +13,7 @@ gem 'redcarpet'
 gem 'sidekiq'
 gem 'unicorn'
 gem 'unicorn-rails'
+gem 'redis'
 
 # frontend
 gem 'slim-rails'

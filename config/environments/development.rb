@@ -52,5 +52,7 @@ Rails.application.configure do
     :password       => 'C845P-MqFH7bMMrXaZkjnQ'
   }
 
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:5f2d388ec76857d31304aa75b788a1c9@barreleye.redistogo.com:10921/'
+
 
 end
